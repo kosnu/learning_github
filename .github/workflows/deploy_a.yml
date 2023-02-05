@@ -1,5 +1,10 @@
+name: Deploy A.
+
 on:
-  workflow_dispatch
+  workflow_dispatch:
+  push:
+    branches:
+      - production
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
