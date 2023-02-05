@@ -1,3 +1,5 @@
+name: Deploy A.
+
 on:
   workflow_dispatch:
   push:

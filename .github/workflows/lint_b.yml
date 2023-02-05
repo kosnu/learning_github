@@ -1,3 +1,5 @@
+name: Lint B.
+
 on:
   workflow_dispatch:
   pull_request:
