@@ -1,0 +1,25 @@
+on:
+  workflow_dispatch
+#  schedule:
+#    - cron:  '0 0 12 ? * THU *' # 毎週木曜日 12:00
+
+jobs:
+  create_release_pull_request:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check if pull request exists
+        id: check_pull_request
+        run: |
+          now=$(date +'%Y%m%d_%H%M%S')
+          pr_title="Releases ${now}"
+          base_branch=production
+          echo "::set-output name=count::$(gh pr list -S ${pr_title}' in:title' -B ${base_branch} | wc -l)"
+          echo "::set-output name=pr_title::${pr_title}"
+          echo "::set-output name=base_branch::${base_branch}"
+      - name: Create release pull request
+        if: ${{ steps.check_pull_request.outputs.count == 0 }}
+        run: |
+          gh pr create --base ${{ steps.check_pull_request.outputs.base_branch }} --title ${{ steps.check_pull_request.outputs.pr_title }} --body ""
