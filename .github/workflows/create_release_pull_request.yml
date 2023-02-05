@@ -24,4 +24,4 @@ jobs:
       - name: Create release pull request
         if: ${{ steps.check_pull_request.outputs.count == 0 }}
         run: |
-          gh pr create --base ${{ steps.check_pull_request.outputs.base_branch }} --title ${{ steps.check_pull_request.outputs.pr_title }} --body ""
+          gh pr create --base ${{ steps.check_pull_request.outputs.base_branch }} --title "${{ steps.check_pull_request.outputs.pr_title }}" --body ""
