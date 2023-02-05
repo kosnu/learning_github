@@ -14,5 +14,7 @@ jobs:
           echo "Build B"
   deploy:
     runs-on: ubuntu-20.04
+    needs:
+      - build
     steps:
       - run: echo "Deploy A"
