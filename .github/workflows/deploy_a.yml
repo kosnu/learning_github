@@ -14,7 +14,7 @@ concurrency:
 jobs:
   build:
     environment: production
-    uses: ./.github/workflows/build_a.yml@production
+    uses: ./.github/workflows/build_a.yml
   deploy:
     runs-on: ubuntu-20.04
     environment: production
