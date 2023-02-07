@@ -1,0 +1,10 @@
+name: Lint A and B.
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+
+jobs:
+  lint_a:
+    uses: ./.github/workflows/lint_a.yml
+  lint_b:
+    uses: ./.github/workflows/lint_b.yml
