@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   build:
+    runs-on: ubuntu-20.04
     environment: production
     uses: ./.github/workflows/build_a.yml
   deploy:
