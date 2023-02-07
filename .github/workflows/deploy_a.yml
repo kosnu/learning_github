@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     environment: production
-    uses: kosnu/learning_github/.github/workflows/build_a.yml
+    uses: kosnu/learning_github/.github/workflows/build_a.yml@main
   deploy:
     runs-on: ubuntu-20.04
     environment: production
