@@ -14,8 +14,7 @@ concurrency:
 jobs:
   build:
     environment: production
-    runs-on: ubuntu-latest
-    uses: kosnu/learning_github/.github/workflows/build_a.yml@main
+    uses: ./.github/workflows/build_a.yml@production
   deploy:
     runs-on: ubuntu-20.04
     environment: production
