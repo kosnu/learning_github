@@ -26,4 +26,4 @@ jobs:
         env:
           BASE_BRANCH: ${{ steps.check_pull_request.outputs.base_branch }}
           PR_TITLE: ${{ steps.check_pull_request.outputs.pr_title }}
-        run: sh ./.github/workflows/utils/create_release_pull_request.sh
+        run: sh ./.github/workflows/utils/create_release_pr.sh
