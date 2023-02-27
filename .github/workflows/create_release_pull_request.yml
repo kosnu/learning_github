@@ -23,6 +23,7 @@ jobs:
           echo "::set-output name=base_branch::${base_branch}"
       - name: Create release pull request
         if: ${{ steps.check_pull_request.outputs.count == 0 }}
-        run: |
-          BODY=`gh pr list --base ${{ steps.check_pull_request.outputs.base_branch }} --state merged --json number,title,headRefName --template '{{range .}}{{tablerow (printf "#%v" .number | autocolor "green") .title .headRefName }}{{end}}'`
-          gh pr create --base ${{ steps.check_pull_request.outputs.base_branch }} --title "${{ steps.check_pull_request.outputs.pr_title }}" --body ${BODY}
+        env:
+          BASE_BRANCH: ${{ steps.check_pull_request.outputs.base_branch }}
+          PR_TITLE: ${{ steps.check_pull_request.outputs.pr_title }}
+        run: sh ./.github/workflows/utils/create_release_pull_request.sh
