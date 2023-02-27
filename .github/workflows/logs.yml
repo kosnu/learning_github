@@ -1,0 +1,16 @@
+name: Log
+
+on:
+  workflow_dispatch:
+    inputs:
+  push:
+    branches:
+      - production
+
+jobs:
+  log:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: |
+          echo "GitHub ref: ${{ github.ref }}"
+          echo "GitHub ref name: A ${{ github.ref_name }}"
