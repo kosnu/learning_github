@@ -12,6 +12,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  tag:
+    runs-on: ubuntu-20.04
+    environment: production
+    steps:
+      - run: gh release create $(date +'%Y%m%d%H%M%S')
   build:
     uses: ./.github/workflows/build_a.yml
   deploy:
