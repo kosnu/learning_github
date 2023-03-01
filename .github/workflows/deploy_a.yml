@@ -18,7 +18,8 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - run: gh release create $(date +'%Y%m%d%H%M%S')
+      - uses: actions/checkout@v3
+      - run: gh release create $(date +'%Y%m%d%H%M%S') -n test
   build:
     uses: ./.github/workflows/build_a.yml
   deploy:
